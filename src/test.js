@@ -1,7 +1,7 @@
-import ExampleComponent from './'
+import HexGrid from './'
 
-describe('ExampleComponent', () => {
+describe('HexGrid', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(HexGrid).toBeTruthy()
   })
 })

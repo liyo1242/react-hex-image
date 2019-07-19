@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'react-hex-image'
+import HexGrid from 'react-hex-image'
+import imgSrc from './image.png';
 
 export default class App extends Component {
+	state = {
+	    hexdata: [imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc, imgSrc],
+	    hexwidth: 200,
+	    hexbetween: 20
+	  }
   render () {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        <HexGrid hexdata={this.state.hexdata} hexwidth={this.state.hexwidth} hexbetween={this.state.hexbetween}/>
       </div>
     )
   }

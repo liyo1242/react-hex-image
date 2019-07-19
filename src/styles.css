@@ -1,8 +1,215 @@
-/* add css styles here (optional) */
+:root {
+  /* Change this to change the appearance of the hexaons */
+  --hex-width: 200px;
+  --hex-between: 20px;
 
-.test {
-  display: inline-block;
-  margin: 2em auto;
-  border: 2px solid #000;
-  font-size: 2em;
+  --hex-height: calc(var(--hex-width) * 1.155 /* 2 / sqrt(3) */);
+  --hex-rowheight: calc(var(--hex-width) * 0.866/* 3 / 2(sqrt(3)) */);
+  --hex-container-bottom-padding: calc(var(--hex-width) * 0.289 /* 1 / 2(sqrt(3)) */);
+  --hex-side-length: calc(var(--hex-width) * 0.578 /* 1 / (sqrt(3)) */);;
+  --hex-margin: calc(var(--hex-width) *　0.5);
+  --hex-border: calc(var(--hex-width) * 1.732 /* sqrt(3) */);
+  --hex-border-span: 4px;
+  /*--hex-transition: all .2s ease;*/
+}
+
+.container {
+  padding-bottom: var(--hex-container-bottom-padding); 
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.hexbox {
+  display: grid;
+  grid-template-columns: repeat(auto-fit , var(--hex-width));
+  grid-auto-rows: var(--hex-rowheight);
+  grid-gap: var(--hex-between) var(--hex-between);
+}
+
+.hexagon {
+  width: var(--hex-width);
+  height: var(--hex-height);
+  background: transparent;
+  /*border-radius: 50%;*/
+  overflow: hidden;
+  transition: .5s;
+}
+
+.hexagon:hover {
+  transform: perspective(1000px) translate(20px,-20px);
+  filter: drop-shadow(0px 24px 10px black);
+}
+
+.hexagoninner {
+  width: 100%;
+  height: 100%;
+  /*border-radius: 50%;*/
+  transform: rotate(-60deg);
+  overflow: hidden;
+  background: transparent;
+}
+.hexagondeepinner {
+  width: 100%;
+  height: 100%;
+  /*border-radius: 50%;*/
+  transform: rotate(-60deg);
+  overflow: hidden;
+}
+
+.hexagonimage {
+  width: 100%;
+  height: 100%;
+  transform: rotate(120deg);
+  background-size: cover;
+  background-position: center;
+}
+
+.hexagonimage span:nth-child(1) {
+  position: absolute;
+  height: var(--hex-border-span);
+  background: linear-gradient(to right, #0c002b,#1779ff);
+  width: var(--hex-side-length);
+  top: var(--hex-container-bottom-padding);
+  transform-origin: top left;
+  transform: rotate(-30deg);
+  animation: animate1 2s linear infinite;
+  left: 0px;
+  visibility: hidden;
+}
+
+@keyframes animate1 {
+  0% {
+    transform: rotate(-30deg) translate(-100%,0%);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(-30deg) translate(100%,0%);
+    visibility: visible;
+  }
+}
+
+.hexagonimage span:nth-child(2) {
+  position: absolute;
+  height: var(--hex-border-span);
+  background: linear-gradient(to right, #0c002b,#1779ff);
+  width: var(--hex-side-length);
+  top: var(--hex-container-bottom-padding);
+  transform-origin: top right;
+  transform: rotate(30deg);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+  right: 0px;
+  visibility: hidden;
+}
+
+@keyframes animate2 {
+  0% {
+    transform: rotate(30deg) translate(-100%,0%);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(30deg) translate(100%,0%);
+    visibility: visible;
+  }
+}
+
+.hexagonimage span:nth-child(3) {
+  position: absolute;
+  height: var(--hex-side-length);
+  background: linear-gradient(to right, #0c002b,#1779ff);
+  width: var(--hex-border-span);
+  top: var(--hex-container-bottom-padding);
+  transform-origin: top right;
+  transform: rotate(0deg);
+  animation: animate3 2s linear infinite;
+  animation-delay: 2s;
+  right: 0px;
+  visibility: hidden;
+}
+
+@keyframes animate3 {  
+  0% {
+    transform: translateY(-100%);
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(100%);
+    visibility: visible;
+  }
+}
+
+.hexagonimage span:nth-child(4) {
+  position: absolute;
+  height: var(--hex-border-span);
+  background: linear-gradient(to right, #0c002b,#1779ff);
+  width: var(--hex-side-length);
+  bottom: var(--hex-container-bottom-padding);
+  transform-origin: top right;
+  transform: rotate(-30deg);
+  animation: animate4 2s linear infinite;
+  animation-delay: 3s;
+  right: 0px;
+  visibility: hidden;
+}
+
+@keyframes animate4 {  
+  0% {
+    transform: rotate(-30deg) translate(100%,0%);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(-30deg) translate(-100%,0%);
+    visibility: visible;
+  }
+}
+
+.hexagonimage span:nth-child(5) {
+  position: absolute;
+  height: var(--hex-border-span);
+  background: linear-gradient(to right, #0c002b,#1779ff);
+  width: var(--hex-side-length);
+  bottom: var(--hex-container-bottom-padding);
+  transform-origin: top left;
+  transform: rotate(30deg);
+  animation: animate5 2s linear infinite;
+  animation-delay: 4s;
+  left: 0px;
+  visibility: hidden;
+}
+
+@keyframes animate5 {  
+  0% {
+    transform: rotate(30deg) translate(100%,0%);
+    visibility: visible;
+  }
+  100% {
+    transform: rotate(30deg) translate(-100%,0%);
+    visibility: visible;
+  }
+}
+.hexagonimage span:nth-child(6) {
+  position: absolute;
+  height: var(--hex-side-length);
+  background: linear-gradient(to right, #0c002b,#1779ff);
+  width: var(--hex-border-span);
+  top: var(--hex-container-bottom-padding);
+  transform-origin: top right;
+  transform: rotate(0deg);
+  animation: animate6 2s linear infinite;
+  animation-delay: 5s;
+  left: 0px;
+  visibility: hidden;
+}
+
+@keyframes animate6 {  
+  0% {
+    transform: translateY(100%);
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(-100%);
+    visibility: visible;
+  }
 }

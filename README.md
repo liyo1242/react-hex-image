@@ -18,9 +18,15 @@ import React, { Component } from 'react'
 import MyComponent from 'react-hex-image'
 
 class Example extends Component {
+  state = {
+    hexdata: [imgSrc, imgSrc2, imgSrc3], // Array
+    hexwidth: "your Hexagon width", // Number
+    hexbetween: "your Hexagon gap" // Number
+  }
+
   render () {
     return (
-      <MyComponent />
+      <MyComponent hexdata={this.state.hexdata} hexwidth={this.state.hexwidth} hexbetween={this.state.hexbetween} />
     )
   }
 }
